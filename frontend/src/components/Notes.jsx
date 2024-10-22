@@ -20,8 +20,8 @@ const Notes = ({ notes, setOpenAddEditModal, setOpenConfirmDeleteModal, fetchNot
   };
 
   return (
-    <section className="notes">
-      <div className="notes-grid">
+    <section className="notes section__padding">
+      <div className={`${notes.length > 2 ? "notes-grid" : "notes-few-grid" }`}>
         {notes?.map((note) => (
           <NoteCard
             key={note._id}

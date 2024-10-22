@@ -60,6 +60,20 @@ img {
   object-fit: cover;
 }
 
+.app__padding {
+  padding: 0 2.45rem;
+}
+
+.section__padding {
+  margin-top: 4.5rem;
+  padding: 4rem;
+}
+
+.ReactModalPortal {
+  position: relative;
+  z-index: 40;
+}
+
 textarea {
   width: 100%;
   padding: 0.575rem 0.75rem;
@@ -169,9 +183,10 @@ input {
 }
 
 .create-notes__wrapper {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
+  position: fixed;
+  bottom: 30px;
+  right: 0;
+  z-index: 15;
 }
 
 .create-notes-btn {
@@ -215,4 +230,20 @@ input {
   backdrop-filter: blur(4.8px);
   -webkit-backdrop-filter: blur(4.8px);
   border: 1px solid rgba(0, 0, 0, 0.085);
+}
+
+@media screen and (max-width: 876px) {
+  .app__padding {
+    padding: 0 1.5rem;
+  }
+
+  .section__padding {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section__padding {
+    margin-top: 3rem;
+  }
 }

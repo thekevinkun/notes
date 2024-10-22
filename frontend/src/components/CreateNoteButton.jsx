@@ -3,7 +3,7 @@ import { MdAdd } from "react-icons/md";
 
 const CreateNoteButton = ({ setOpenAddEditModal }) => {
   return (
-    <div className="create-notes__wrapper">
+    <div className="create-notes__wrapper app__padding">
       <button
         className="create-notes-btn"
         onClick={() => {

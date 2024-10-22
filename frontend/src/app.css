@@ -1,28 +1,41 @@
 /* START OF NAVBAR Styles */
-.nav {
+.nav,
+.nav-out, 
+.nav__smallscreen {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 20;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: var(--secondary-font-family);
-    padding: 1.2rem 2.45rem;
+    padding-top: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
-.nav .nav__title {
+.nav .nav__title,
+.nav-out .nav__title {
     flex-grow: 1;
     flex-basis: 0;
 }
 
-.nav .nav__title a {
+.nav .nav__title a,
+.nav-out .nav__title a,
+.nav__smallscreen .nav__title a {
     font-size: 1.85rem;
     font-weight: 700;
     background: var(--title-color-gradient);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    user-select: none;
 }
 
-.nav .nav__search-bar {
+.nav .nav__search-bar,
+.nav__smallscreen .nav__search-bar {
     width: 380px;
     padding: 0 1rem;
     display: flex;
@@ -49,7 +62,8 @@
     color: #000;
 }
 
-.nav .nav__profile {
+.nav .nav__profile,
+.nav__smallscreen .nav__profile {
     flex-grow: 1;
     flex-basis: 0;
     display: flex;
@@ -57,13 +71,15 @@
     gap: 7px;
 }
 
-.nav .nav__profile .nav__profile--name {
+.nav .nav__profile .nav__profile--name,
+.nav__smallscreen .nav__profile .nav__profile--name {
     margin-left: auto;
     font-size: 1.25rem;
     font-weight: 300;
 }
 
-.nav .nav__profile .logout-profile {
+.nav .nav__profile .logout-profile,
+.nav__smallscreen .nav__profile .logout-profile {
     margin-left: auto;
     padding: 0.25rem 0.45rem;
     font-size: 0.95rem;
@@ -75,14 +91,91 @@
     transition: color .15s ease-in-out;
 }
 
-.nav .nav__profile .logout-profile:hover {
+.nav .nav__profile .logout-profile:hover,
+.nav__smallscreen .nav__profile .logout-profile:hover {
     background-color: var(--danger-hover-color);
     color: #fff;
+}
+
+/* START OF NAVBAR SMALLSCREEN Styles */
+.nav__smallscreen {
+    display: none !important;
+}
+
+.nav__smallscreen .nav__smallside {
+    display: flex;
+    gap: 20px;
+}
+
+.nav__smallscreen .nav__title a {
+    font-size: 1.65rem !important;
+}
+
+.nav__smallscreen .nav__smallside .nav__menu {
+    font-size: 1.5rem;
+    margin-top: 4.5px;
+}
+
+.nav__smallside .nav__menu:hover {
+    cursor: pointer;
+    color: var( --btn-gray-hover-bg);
+}
+
+.nav__smallscreen .nav__menu-content {
+    position: fixed;
+    top: 53px;
+    left: 34px;
+    padding: 2.5rem 3rem;
+    border-radius: 2px;
+    background: #fff;
+    box-shadow: 0 2px 6px 3px rgba(0,0,0,.2);
+}
+
+@media screen and (max-width: 768px) {
+    .nav {
+        display: none;
+    }
+
+    .nav__smallscreen {
+        display: flex !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .nav__smallscreen .nav__search-bar {
+        width: 320px;
+    }
+
+    .nav__smallscreen .nav__profile {
+        flex-grow: 0;
+        flex-basis: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav__smallscreen .nav__profile .nav__profile--name,
+    .nav__smallscreen .nav__profile .logout-profile {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 578px) {
+    .nav__smallscreen .nav__smallside {
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .nav__smallscreen .nav__search-bar {
+        width: 280px;
+    }
 }
 /* END OF NAVBAR Styles */
 
 /* START OF FORM Styles */
-    .form {
+.form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,16 +248,22 @@
 }
 
 .notes {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 2.5rem 0;
+    position: relative;
+    z-index: 10;
 }
 
 .notes .notes-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
     gap: 15px;
     justify-content: center;
+    align-items: center;
+}
+
+.notes .notes-few-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 408px);
+    gap: 15px;
     align-items: center;
 }
 
@@ -233,7 +332,7 @@
 
 .note__card .note__card--icon {
     position: relative;
-    z-index: 999;
+    z-index: 15;
     font-size: 1.135rem;
     color: var(--tertiary-font-color);
 }
@@ -268,6 +367,12 @@
 
 .pinned-note-icon:hover {
     color: var(--tertiary-font-color) !important;
+}
+
+@media screen and (max-width: 876px) {
+    .notes .notes-few-grid {
+        justify-content: center;
+    }
 }
 /* END OF NOTES Styles */
 
@@ -414,6 +519,33 @@
     font-weight: 400;
     color: var(--danger-color);
 }
+
+@media screen and (max-width: 1024px) {
+    .add-edit-notes__showcase {
+        width: 50%;
+    }
+
+    .add-edit-notes__field .input-date__field input {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .add-edit-notes__showcase {
+        width: 70%;
+    }
+
+    .add-edit-notes__field .input-date__field input {
+        width: 40%;
+    }
+}
+
+
+@media screen and (max-width: 640px) {
+    .add-edit-notes__showcase {
+        width: 90%
+    }
+}
 /* END OF ADD EDIT SHOWCASE Styles */
 
 /* START OF CONFIRM DELETE SHOWCASE Styles */
@@ -459,4 +591,3 @@
 /* END OF CONFIRM DELETE SHOWCASE Styles */
 
 /* END OF HOME Styles */
-  

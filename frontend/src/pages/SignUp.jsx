@@ -58,7 +58,7 @@ const SignUp = () => {
     <>
       <Navbar />
 
-      <section className="form">
+      <section className="form section__padding">
         <div className="form-box">
           <form onSubmit={handleSignUp}>
             <h4 className="form-title">SignUp</h4>
